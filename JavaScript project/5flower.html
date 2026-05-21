@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The bloomed petal</title>
+  <link rel="stylesheet" href="5flower.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo" onclick="window.location.href='2home.html'">🌸 The Bloomed <span>Petal</span></div>
+    
+      <a class="nav-link" onclick="window.location.href='2home.html'">🏠 Home</a>
+      <a class="nav-link" onclick="window.location.href='6bookstore.html'">📚 Bookstore</a>
+      <a class="nav-link" onclick="window.location.href='3cafe.html'">☕ Café</a>
+      <a class="nav-link" onclick="window.location.href='4icecream.html'">🍦 Ice Cream</a>
+      <a class="nav-link feedback-nav-btn" href="7feedback.html" target="_blank">💬 Feedback</a>
+    </div>
+    
+    <div class="nav-icons">
+      <button class="nav-icon-btn" onclick="toggleWishlist()">🤍 <span class="badge" id="wish-badge">0</span></button>
+      <button class="nav-icon-btn" onclick="toggleCart()">🛒 <span class="badge" id="cart-badge">0</span></button>
+    </div>
+  </nav>
+
+  <div class="discount-strip">
+    🌸 USE CODE <strong>BLOOM20</strong> FOR 20% OFF &nbsp;|&nbsp; FREE SAME-DAY DELIVERY ON ORDERS ABOVE ₹599
+  </div>
+
+  <div class="flower-hero">
+    <button class="back-btn" onclick="window.location.href='2home.html'">← Back to Oasis</button>
+    <div class="flower-petals">🌹🌷🌼🌸🌺</div>
+    <h1 class="flower-hero-title">🌸 The Bloom Petal</h1>
+    <p class="flower-hero-sub">Fresh flowers · Gift bouquets · Send with love</p>
+    <div class="mode-toggle">
+      <button class="mode-btn active" onclick="setMode('online', this)">🌐 Order Online</button>
+      <button class="mode-btn" onclick="setMode('offline', this)">🌿 Visit Store</button>
+    </div>
+  </div>
+
+  <div id="offline-msg" class="offline-msg">
+    📍 <strong>Visit Us:</strong> Urban Oasis Flower Shop · Fresh stock every morning 6 AM · Same-day delivery available
+  </div>
+
+  <div class="flower-content">
+    <div class="online-gift-banner" id="gift-banner">
+      <div class="gift-banner-icon">💌</div>
+      <div class="gift-banner-text">
+        <h3>Send Flowers to Someone Special</h3>
+        <p>Choose a bouquet, add a heartfelt note, and share a gifting link — we'll handle the rest with love!</p>
+      </div>
+      <button class="btn-gift" onclick="openGiftModal()">Send a Gift 💝</button>
+    </div>
+
+    <div class="flowers-grid" id="flowers-grid"></div>
+
+    <div class="freebies-section">
+      <h3 class="freebies-title">🎁 Florals & Freebies</h3>
+      <p class="freebies-sub">Because every bouquet deserves a special touch.</p>
+      <div class="freebies-grid">
+        <div class="freebie-card"><span class="freebie-icon">💌</span><div class="freebie-name">Gift Card</div><div class="freebie-cond">Every order</div></div>
+        <div class="freebie-card"><span class="freebie-icon">🎀</span><div class="freebie-name">Silk Ribbon</div><div class="freebie-cond">Premium wrapping</div></div>
+        <div class="freebie-card"><span class="freebie-icon">🧴</span><div class="freebie-name">Flower Mist</div><div class="freebie-cond">On ₹799+ orders</div></div>
+        <div class="freebie-card"><span class="freebie-icon">🕯️</span><div class="freebie-name">Scented Candle</div><div class="freebie-cond">Occasion bouquets</div></div>
+        <div class="freebie-card"><span class="freebie-icon">📸</span><div class="freebie-name">Polaroid Photo</div><div class="freebie-cond">With every gift</div></div>
+      </div>
+    </div>
+
+    <div class="feedback-section-btn">
+      <a href="7feedback.html" target="_blank" class="feedback-section-link">
+        💬 Share Your Feedback → Help Us Bloom Better
+      </a>
+    </div>
+
+    <div class="reviews-section">
+      <p class="section-label">Blooming Reviews</p>
+      <h2 class="section-title">What Our Customers Say</h2>
+      <div class="reviews-grid" id="reviews-grid"></div>
+    </div>
+
+    <div class="faq-section">
+      <p class="section-label">FAQs</p>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div id="faq-container"></div>
+    </div>
+  </div>
+
+  <div class="drawer-overlay" id="cart-overlay" onclick="toggleCartDrawer()"></div>
+  <div class="drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">🛒 Your Cart</h3>
+      <button class="drawer-close" onclick="toggleCartDrawer()">✕</button>
+    </div>
+    <div class="drawer-body" id="cart-body">
+      <div class="empty-state">🛒 Your cart is empty</div>
+    </div>
+    <div class="drawer-footer">
+      <div class="cart-total"><span>Total</span><span id="cart-total-amt">₹0</span></div>
+      <button class="btn-full" onclick="checkout()">Proceed to Checkout →</button>
+    </div>
+  </div>
+
+  <div class="drawer-overlay" id="wish-overlay" onclick="toggleWishlistDrawer()"></div>
+  <div class="drawer" id="wishlist-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">🤍 Wishlist</h3>
+      <button class="drawer-close" onclick="toggleWishlistDrawer()">✕</button>
+    </div>
+    <div class="drawer-body" id="wish-body">
+      <div class="empty-state">🤍 Your wishlist is empty</div>
+    </div>
+    <div class="drawer-footer">
+      <button class="btn-full" style="background:#e91e8c;" onclick="moveAllToCart()">Move All to Cart 🛒</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">🌸 Urban Oasis Flower Shop</div>
+    <p>© 2025 Urban Oasis — Spreading love, one bouquet at a time.<br>
+    Made By Ridhima</p>
+    <p style="margin-top: 0.5rem; font-size: 0.7rem;">Mon–Sun 6 AM – 9 PM</p>
+  </div>
+
+  <div class="modal-overlay" id="gift-modal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('gift-modal')">✕</button>
+      <h2 class="modal-title">Send Flowers with Love 💐</h2>
+      <p class="modal-subtitle">Fill in the details and we'll create a gifting link</p>
+      <div class="form-group"><label>Recipient's Name</label><input type="text" id="gift-name" placeholder="Who is this for?"></div>
+      <div class="form-group"><label>Recipient's Phone / Email</label><input type="text" id="gift-contact" placeholder="For delivery coordination"></div>
+      <div class="form-group"><label>Delivery Address</label><input type="text" id="gift-address" placeholder="Full address"></div>
+      <div class="form-group"><label>Occasion</label>
+        <select id="gift-occasion">
+          <option>Birthday 🎂</option><option>Anniversary 💑</option><option>Sorry 🙏</option>
+          <option>Congratulations 🎉</option><option>Just Because 💕</option><option>Condolences 🤍</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Personal Note (optional)</label><textarea rows="3" id="gift-note" placeholder="Write a heartfelt message..."></textarea></div>
+      <button class="btn-full" onclick="generateGiftLink()">Generate Gift Link 💝</button>
+      <div id="gift-link-result" style="display:none; margin-top:1rem; padding:1rem; background:#fff0f7; border-radius:12px; text-align:center;">
+        <p style="font-size:0.85rem; color:#888;">Share this link with your recipient</p>
+        <code style="font-size:0.75rem; color:#e91e8c; word-break:break-all;">https://urbanoasis.in/gift/flower123</code>
+        <br><button style="margin-top:0.75rem; padding:0.5rem 1.2rem; background:#e91e8c; color:white; border:none; border-radius:8px; cursor:pointer;" onclick="copyGiftLink()">Copy Link</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="5flower.js"></script>
+</body>
+</html>

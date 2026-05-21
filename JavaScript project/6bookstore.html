@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Paper Meadows – The Library & Bookstore</title>
+  <link rel="stylesheet" href="6bookstore.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo" onclick="window.location.href='2home.html'">📖 The Paper <span>Meadows</span></div>
+    <div class="nav-links">
+      <a class="nav-link" onclick="window.location.href='2home.html'">🏠 Home</a>
+      <a class="nav-link" onclick="window.location.href='5flower.html'">🌸 Flower Shop</a>
+      <a class="nav-link" onclick="window.location.href='3cafe.html'">☕ Café</a>
+      <a class="nav-link" onclick="window.location.href='4icecream.html'">🍦 Ice Cream</a>
+      <a class="nav-link feedback-nav-btn" href="7feedback.html" target="_blank">💬 Feedback</a>
+    </div>
+    <div class="nav-icons">
+      <button class="nav-icon-btn" onclick="toggleWishlist()">🤍 <span class="badge" id="wish-badge">0</span></button>
+      <button class="nav-icon-btn" onclick="toggleCart()">🛒 <span class="badge" id="cart-badge">0</span></button>
+    </div>
+  </nav>
+
+  <div class="discount-strip">
+    🎉 USE CODE <strong>OASIS20</strong> FOR 20% OFF YOUR FIRST ORDER &nbsp;|&nbsp; FREE DELIVERY ON ORDERS ABOVE ₹499
+  </div>
+
+  <div class="library-hero">
+    <button class="back-btn" onclick="window.location.href='2home.html'">← Back to Oasis</button>
+    <h1 class="library-hero-title">📚 The Paper Meadows</h1>
+    <p class="library-hero-sub">Where every page is a portal to another world</p>
+  </div>
+
+  <div class="library-content">
+    <div class="filter-bar">
+      <input type="text" id="lib-search" placeholder="🔍 Search by title, author…" oninput="filterBooks()">
+      <select class="filter-select" id="lib-genre" onchange="filterBooks()">
+        <option value="">All Genres</option>
+        <option value="Fiction">Fiction</option>
+        <option value="Non-Fiction">Non-Fiction</option>
+        <option value="Mystery">Mystery</option>
+        <option value="Romance">Romance</option>
+        <option value="Science">Science</option>
+      </select>
+      <select class="filter-select" id="lib-sort" onchange="filterBooks()">
+        <option value="">Sort By</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+      </select>
+    </div>
+
+    <div class="genre-tabs" id="genre-tabs">
+      <button class="genre-tab active" data-genre="All" onclick="setGenre(this, 'All')">All</button>
+      <button class="genre-tab" data-genre="Fiction" onclick="setGenre(this, 'Fiction')">Fiction</button>
+      <button class="genre-tab" data-genre="Non-Fiction" onclick="setGenre(this, 'Non-Fiction')">Non-Fiction</button>
+      <button class="genre-tab" data-genre="Mystery" onclick="setGenre(this, 'Mystery')">Mystery</button>
+      <button class="genre-tab" data-genre="Romance" onclick="setGenre(this, 'Romance')">Romance</button>
+      <button class="genre-tab" data-genre="Science" onclick="setGenre(this, 'Science')">Science</button>
+    </div>
+
+    <div class="books-grid" id="books-grid"></div>
+
+    <div class="freebies-section">
+      <h3 class="freebies-title">🎁 Free With Every Purchase</h3>
+      <p class="freebies-sub">Because books deserve a little extra love.</p>
+      <div class="freebies-grid">
+        <div class="freebie-card"><span class="freebie-icon">🔖</span><div class="freebie-name">Handcrafted Bookmark</div><div class="freebie-cond">Every purchase</div></div>
+        <div class="freebie-card"><span class="freebie-icon">📝</span><div class="freebie-name">Reading Notes Pad</div><div class="freebie-cond">On ₹299+ orders</div></div>
+        <div class="freebie-card"><span class="freebie-icon">🕯️</span><div class="freebie-name">Scented Candle</div><div class="freebie-cond">On ₹599+ orders</div></div>
+        <div class="freebie-card"><span class="freebie-icon">☕</span><div class="freebie-name">Free Café Drink</div><div class="freebie-cond">On 3+ books</div></div>
+        <div class="freebie-card"><span class="freebie-icon">🎴</span><div class="freebie-name">Literary Postcards</div><div class="freebie-cond">Limited edition</div></div>
+      </div>
+    </div>
+
+    <div class="feedback-section-btn">
+      <a href="7feedback.html" target="_blank" class="feedback-section-link">
+        💬 Share Your Feedback → Help Us Improve
+      </a>
+    </div>
+
+    <div class="reviews-section">
+      <p class="section-label">Reader Reviews</p>
+      <h2 class="section-title">What Our Readers Say</h2>
+      <div class="reviews-grid" id="reviews-grid"></div>
+    </div>
+
+    <div class="faq-section">
+      <p class="section-label">FAQs</p>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div id="faq-container"></div>
+    </div>
+  </div>
+
+  <div class="drawer-overlay" id="cart-overlay" onclick="toggleCartDrawer()"></div>
+  <div class="drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">🛒 Your Cart</h3>
+      <button class="drawer-close" onclick="toggleCartDrawer()">✕</button>
+    </div>
+    <div class="drawer-body" id="cart-body">
+      <div class="empty-state">🛒 Your cart is empty</div>
+    </div>
+    <div class="drawer-footer">
+      <div class="cart-total"><span>Total</span><span id="cart-total-amt">₹0</span></div>
+      <button class="btn-full" onclick="checkout()">Proceed to Checkout →</button>
+    </div>
+  </div>
+
+  <div class="drawer-overlay" id="wish-overlay" onclick="toggleWishlistDrawer()"></div>
+  <div class="drawer" id="wishlist-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">🤍 Wishlist</h3>
+      <button class="drawer-close" onclick="toggleWishlistDrawer()">✕</button>
+    </div>
+    <div class="drawer-body" id="wish-body">
+      <div class="empty-state">🤍 Your wishlist is empty</div>
+    </div>
+    <div class="drawer-footer">
+      <button class="btn-full" style="background:#c8892a;" onclick="moveAllToCart()">Move All to Cart 🛒</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">📖 The Paper Meadows</div>
+    <p>© 2025 The Paper Meadows — Where stories come alive. All rights reserved.<br>
+    Made By Ridhima</p>
+    <p style="margin-top: 0.5rem; font-size: 0.7rem;">Mon–Sun 9 AM – 9 PM</p>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="6bookstore.js"></script>
+</body>
+</html>

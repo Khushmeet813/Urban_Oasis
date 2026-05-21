@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="3cafe.css">
+    <title>The Brew Cafe</title>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="2home.html">Home</a>
+        <a href="4icecream.html">Ice Cream Shop</a>
+        <a href="5flower.html">Flower Shop</a>
+        <a href="6bookstore.html">Bookstore</a>
+    </nav>
+
+    <div class="logo">
+        <img src="Images/CafeLogo.png" alt="The Brew Cafe Logo">
+    </div>
+
+    <div class="icons">
+        <a href="7feedback.html" class="iconbtn" id="feedback" title="Feedback">💬</a>
+
+        <div class="iconCount" id="favorites" title="Favorites" onclick="togglePanel('favorites-panel', true)">❤️
+            <span class="badge" id="favCount">0</span>
+        </div>
+
+        <div class="iconCount" id="cart" title="Cart" onclick="togglePanel('cart-panel', true)">🛒
+            <span class="badge" id="cartCount">0</span>
+        </div>
+    </div>
+</header>
+
+<p style="background-color: #E7DEDB; color: #654C34; text-align: center; ">
+    ✨ <b>Enjoy Live Music and Performance Every Saturday </b>✨ </p>
+
+<div id="details-panel" class="side-panel">
+    <div class="panel-header">
+        <h2 id="details-title">Product Details</h2>
+        <span class="close-panel" onclick="togglePanel('details-panel', false)">&times;</span>
+    </div>
+    <div class="details-body" id="details-body">
+    </div>
+</div>
+
+<div id="cart-panel" class="side-panel">
+    <div class="panel-header">
+        <h2>Your Order</h2>
+        <span class="close-panel" onclick="togglePanel('cart-panel', false)">&times;</span>
+    </div>
+    <ul id="cart-items" class="panel-list-items">
+    </ul>
+    <div class="panel-footer" id="cart-footer-actions">
+        <h3>Total: ₹<span id="cart-total">0</span></h3>
+        <button class="checkout-btn" onclick="processCheckout()">Checkout</button>
+    </div>
+</div>
+
+<div id="favorites-panel" class="side-panel">
+    <div class="panel-header">
+        <h2>My Favorites</h2>
+        <span class="close-panel" onclick="togglePanel('favorites-panel', false)">&times;</span>
+    </div>
+    <ul id="fav-items" class="panel-list-items">
+    </ul>
+</div>
+
+<div id="panel-overlay" class="panel-overlay" onclick="closeAllPanels()"></div>
+
+<div id="about" class="about1">
+    <p class="firstp">Explore The Magic Of</p>
+    <h2>The Brew Cafe</h2>
+    <p>Start your day strong with every <br>smooth & energizing sip</p>
+</div>
+
+<section class="filter-section">
+    <div class="category-buttons">
+        <button onclick="filterCategory('all')">All</button>
+        <button onclick="filterCategory('coffee')">Coffee</button>
+        <button onclick="filterCategory('non-coffee')">Non-Coffee</button>
+        <button onclick="filterCategory('tea')">Tea</button>
+        <button onclick="filterCategory('desserts')">Desserts</button>
+    </div>
+</section>
+
+<section id="menu-section">
+    <h1 id="menu-title">Our Menu</h1>
+    <div class="specials" id="menu-container">
+    </div>
+</section>
+    
+<section class="features">
+    <div class="feature-box">
+        <h2>Premium Quality</h2>
+        <p>Finest coffee beans sourced globally</p>
+    </div>
+    <div class="feature-box">
+        <h2>Freshly Brewed</h2>
+        <p>Made fresh for you every single time</p>
+    </div>
+    <div class="feature-box">
+        <h2>Made with Love</h2>
+        <p>Every cup is crafted with passion</p>
+    </div>
+    <div class="feature-box">
+        <h2>Cozy Ambience</h2>
+        <p>A warm place to relax and enjoy</p>
+    </div>
+</section>
+
+<div id="notification-toast" class="toast"></div>
+
+<footer>
+    <p>&copy; All Rights reserved, 2026 Urban Oasis | Crafted with Love 🤍<br>
+    Made By Khushmeet</p>
+</footer>
+
+<script src="3cafe.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="4icecream.css">
+    <title>The Velvet Frost</title>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="2home.html">Home</a>    
+        <a href="3cafe.html">Café</a>
+        <a href="5flower.html">Flower Shop</a>
+        <a href="6bookstore.html">Bookstore</a>
+    </nav>
+
+    <div class="logo">
+        <h2>THE VELVET FROST</h2>
+    </div>
+
+    <div class="icons">
+        <a href="7feedback.html" class="iconbtn" id="feedback" title="Feedback">💬</a>
+
+        <div class="iconCount" id="favorites" title="Favorites" onclick="togglePanel('favorites-panel', true)">❤️
+            <span class="badge" id="favCount">0</span>
+        </div>
+
+        <div class="iconCount" id="cart" title="Cart" onclick="togglePanel('cart-panel', true)">🛒
+            <span class="badge" id="cartCount">0</span>
+        </div>
+
+    </div>
+</header>
+
+<div id="cart-panel" class="side-panel">
+    <div class="panel-header">
+        <h2>Your Order</h2>
+        <span class="close-panel" onclick="togglePanel('cart-panel', false)">&times;</span>
+    </div>
+    <ul id="cart-items" class="panel-list-items">
+    </ul>
+    <div class="panel-footer" id="cart-footer-actions">
+        <h3>Total: ₹<span id="cart-total">0</span></h3>
+        <button class="checkout-btn" onclick="processCheckout()">Place Order</button>
+    </div>
+</div>
+
+<div id="favorites-panel" class="side-panel">
+    <div class="panel-header">
+        <h2>My Saved Flavors</h2>
+        <span class="close-panel" onclick="togglePanel('favorites-panel', false)">&times;</span>
+    </div>
+    <ul id="fav-items" class="panel-list-items">
+    </ul>
+</div>
+
+<div id="panel-overlay" class="panel-overlay" onclick="closeAllPanels()"></div>
+
+<div id="about" class="about1">
+    <p class="firstp">Pure Artisan Magic</p>
+    <h2>Cold Premium Delights</h2>
+    <p>Crafted dynamically in small batches using <br>organic dairy and local, natural ingredients</p>
+</div>
+
+<section class="filter-section">
+    <div class="category-buttons">
+        <button onclick="filterCategory('all')">All Flavors</button>
+        <button onclick="filterCategory('classic')">Classic Flavors</button>
+        <button onclick="filterCategory('sundaes')">Signature Sundaes</button>
+        <button onclick="filterCategory('tropical')">Tropical Flavors</button>
+        <button onclick="filterCategory('limited')">Limited Editions</button>
+    </div>
+</section>
+
+<section class="toppings-section">
+    <h2>Customize Your Scoop</h2>
+    <p>Select toppings below first, then click "Add to Order" on your favorite flavor!</p>
+    <div class="toppings-grid-layout" id="toppings-container">
+    </div>
+</section>
+
+<section id="menu-section">
+    <h1 id="menu-title">Our Menu</h1>
+    <div class="specials" id="menu-container">
+    </div>
+</section>
+
+<section class="sweet-deals-section">
+    <h2>Sweet Deals</h2>
+    <p>Sweet treats deserve sweeter surprises</p>
+    
+    <div class="deals-container-grid">
+        <div class="deal-offer-card">
+            <div class="deal-content-wrapper">
+                <span class="deal-icon-sparkle">✧</span>
+                <span class="deal-text-string">Candy after every order</span>
+            </div>
+        </div>
+        
+        <div class="deal-offer-card">
+            <div class="deal-content-wrapper">
+                <span class="deal-icon-sparkle">✧</span>
+                <span class="deal-text-string">Polaroid photo on weekends</span>
+            </div>
+        </div>
+        
+        <div class="deal-offer-card">
+            <div class="deal-content-wrapper">
+                <span class="deal-icon-sparkle">✧</span>
+                <span class="deal-text-string">Waffle cone on 2+ scoops of same icecream</span>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<section class="features">
+    <div class="feature-box">
+        <h2>Organic Dairy</h2>
+        <p>100% grass-fed milk sourced directly from local, family-owned farms</p>
+    </div>
+    <div class="feature-box">
+        <h2>House-Made Cones</h2>
+        <p>Slow baked daily using fresh brown sugar and signature vanilla bean extract</p>
+    </div>
+    <div class="feature-box">
+        <h2>No Additives</h2>
+        <p>Completely free from artificial colors, corn syrups, and stabilizers</p>
+    </div>
+    <div class="feature-box">
+        <h2>Curated Toppings</h2>
+        <p>Gourmet house-spun sauces and crushed honey-roasted nuts</p>
+    </div>
+</section>
+
+<div id="notification-toast" class="toast"></div>
+
+<footer>
+    <div class="footer">
+        <p>&copy; 2026 The Velvet Frost | Crafted with Love 🤍<br>
+        Made By Khushmeet</p>
+    </div>
+</footer>
+
+<script src="4icecream.js"></script>
+</body>
+</html>

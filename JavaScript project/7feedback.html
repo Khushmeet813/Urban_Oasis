@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Urban Oasis – Share Your Feedback</title>
+  <link rel="stylesheet" href="7feedback.css">
+</head>
+<body>
+
+  <div class="feedback-container">
+    <div class="feedback-header">
+      <a href="2home.html" class="logo">🌿 Urban <span>Oasis</span></a>
+      <h1>Share Your Experience 💬</h1>
+      <p>Your feedback helps us grow and serve you better</p>
+    </div>
+
+    <a href="2home.html" class="back-btn">← Back to Oasis</a>
+
+    <div class="feedback-card">
+      <form id="feedbackForm">
+        <div class="form-group">
+          <label>
+            <span class="label-icon">🏪</span>
+            Which Store?
+          </label>
+          <select id="storeSelect" required>
+            <option value="">Select a store...</option>
+            <option value="library">📚 The Library / Bookstore</option>
+            <option value="cafe">☕ The Café</option>
+            <option value="flower">🌸 Flower Shop</option>
+            <option value="icecream">🍦 Ice Cream Studio</option>
+            <option value="overall">🌿 Overall Urban Oasis</option>
+          </select>
+        </div>
+
+        <div id="storeOptions" class="store-options"></div>
+
+        <div class="rating-container">
+          <div class="rating-label">
+            <span class="label-icon">⭐</span>
+            Rate Your Experience
+          </div>
+          <div class="stars" id="starRating">
+            <button type="button" class="star-btn" data-rating="1">★</button>
+            <button type="button" class="star-btn" data-rating="2">★</button>
+            <button type="button" class="star-btn" data-rating="3">★</button>
+            <button type="button" class="star-btn" data-rating="4">★</button>
+            <button type="button" class="star-btn" data-rating="5">★</button>
+          </div>
+          <input type="hidden" id="ratingValue" value="0">
+          <span class="rating-value" id="ratingText">Select a rating</span>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <span class="label-icon">👤</span>
+            Your Name
+          </label>
+          <input type="text" id="userName" placeholder="Enter your name (optional)">
+        </div>
+
+        <div class="form-group">
+          <label>
+            <span class="label-icon">📧</span>
+            Email Address
+          </label>
+          <input type="email" id="userEmail" placeholder="So we can reach back to you (optional)">
+        </div>
+
+        <div class="form-group">
+          <label>
+            <span class="label-icon">💭</span>
+            Your Feedback
+          </label>
+          <textarea id="feedbackMessage" rows="4" placeholder="Tell us what you loved or how we can improve..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Feedback →</button>
+      </form>
+
+      <div id="successMessage" class="success-message">
+        <span class="check-icon">✅</span>
+        <p>Thank you for your feedback! We truly appreciate your time. 🌿</p>
+        <button class="close-success" id="closeSuccessBtn">✕</button>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <p>Your feedback helps us create a better Urban Oasis experience ❤️</p>
+      <p style="margin-top: 5px;">📍 Green Street, Urban City  | 📞 +91 98765-43210</p>
+    </div>
+  </div>
+
+  <script src="7feedback.js"></script>
+</body>
+</html>

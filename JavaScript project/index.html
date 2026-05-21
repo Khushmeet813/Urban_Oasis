@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Urban Oasis - Login</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div class="box">
+        <img src="Images/UrbanOasis.jpg" alt="Urban Oasis Logo">
+        <p class="text">Welcome back! Please log in.</p>
+
+        <form id="loginform">
+            <div class="field">
+                <label>Email Address</label>
+                <input type="text" id="email" placeholder="name@example.com">
+                <div class="error" id="emailerror">Please type a real email</div>
+            </div>
+
+            <div class="field">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="••••••••">
+                <div class="error" id="passworderror">Password must be 6 letters or more</div>
+            </div>
+
+            <div class="row">
+                <label class="remember">
+                    <input type="checkbox" id="remember">
+                    <span>Remember me</span>
+                </label>
+                <a href="#" class="link" id="forgotlink">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn">Sign In</button>
+        </form>
+
+        <p class="switch">
+            Don't have an account? <a href="#" id="signuplink">Sign up</a>
+        </p>
+    </div>
+
+    <div id="toast"></div>
+
+    <script src="index.js"></script>
+</body>
+</html>
